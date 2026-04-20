@@ -5,6 +5,11 @@ import captureButtonSvg from './public/button.svg'
 import scanIndicatorSvg from './public/scanner.svg'
 import centerScanIcon from './public/Vector.svg'
 import addPlantButtonSvg from './public/addplant.svg'
+import heroPlantImage from './public/1.png'
+import waterTaskImage from './public/2.png'
+import cutTaskImage from './public/3.png'
+import repotTaskImage from './public/4.png'
+import collectionPlantImage from './public/5.png'
 
 const MOBILE_MAX_WIDTH = 1100
 
@@ -27,7 +32,7 @@ function PlantOverviewPage({ onOpenScanner }) {
   return (
     <main className="plant-page-shell">
       <section className="plant-hero" aria-label="Plant overview hero">
-        <div className="image-slot hero-image-slot" role="img" aria-label="Hero plant image placeholder" />
+        <img src={heroPlantImage} alt="Plant hero" className="hero-image" />
       </section>
 
       <section className="plant-content">
@@ -62,22 +67,22 @@ function PlantOverviewPage({ onOpenScanner }) {
         <h2 className="plant-section-title">To Do</h2>
         <div className="plant-todo-list">
           <article className="plant-todo-card">
-            <div className="image-slot todo-image-slot" role="img" aria-label="Water task image placeholder" />
+            <img src={waterTaskImage} alt="Water task" className="todo-image" />
             <button type="button" className="plant-todo-action">Water me</button>
           </article>
           <article className="plant-todo-card">
-            <div className="image-slot todo-image-slot" role="img" aria-label="Cut task image placeholder" />
+            <img src={cutTaskImage} alt="Cut task" className="todo-image" />
             <button type="button" className="plant-todo-action">Cut me</button>
           </article>
           <article className="plant-todo-card">
-            <div className="image-slot todo-image-slot" role="img" aria-label="Repot task image placeholder" />
+            <img src={repotTaskImage} alt="Repot task" className="todo-image" />
             <button type="button" className="plant-todo-action">Repot me</button>
           </article>
         </div>
 
         <h2 className="plant-section-title">See Your Collection</h2>
         <article className="collection-card">
-          <div className="image-slot collection-image-slot" role="img" aria-label="Collection image placeholder" />
+          <img src={collectionPlantImage} alt="Collection plant" className="collection-image" />
           <div className="collection-meta">
             <p>Alberto the Cactus</p>
             <p>2 years old</p>

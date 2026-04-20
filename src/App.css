@@ -502,20 +502,11 @@ button {
 	overflow: hidden;
 }
 
-
-.image-slot {
-	display: block;
-	border-radius: 20px;
-	border: 1px dashed rgb(0 0 0 / 16%);
-	background: linear-gradient(145deg, #f4f4f4, #e4e4e4);
-}
-
-.hero-image-slot {
+.hero-image {
 	height: 100%;
 	width: 100%;
-	border-radius: 0;
-	border: 0;
-	background: linear-gradient(180deg, #d5deea, #edf0f6);
+	object-fit: cover;
+	display: block;
 }
 
 .plant-content {
@@ -607,12 +598,14 @@ button {
 	box-shadow: 0 2px 10px rgb(0 0 0 / 8%);
 }
 
-.todo-image-slot {
+.todo-image {
 	width: 164px;
 	height: 78px;
 	border-radius: 20px;
 	box-shadow: 0 4px 11px rgb(0 0 0 / 10%);
 	flex-shrink: 0;
+	object-fit: cover;
+	display: block;
 }
 
 .plant-todo-action {
@@ -634,8 +627,11 @@ button {
 	overflow: hidden;
 }
 
-.collection-image-slot {
+.collection-image {
 	height: 220px;
+	width: 100%;
+	object-fit: cover;
+	display: block;
 }
 
 .collection-meta {
