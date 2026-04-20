@@ -29,6 +29,22 @@
 	overflow: visible;
 }
 
+html.plant-screen,
+body.plant-screen {
+	height: auto !important;
+	min-height: 100% !important;
+	overflow-y: auto !important;
+	overflow-x: hidden !important;
+	touch-action: pan-y;
+}
+
+body.plant-screen #root {
+	height: auto !important;
+	min-height: 0 !important;
+	overflow: visible !important;
+	display: block !important;
+}
+
 #root.is-plant-screen .plant-page-shell {
 	min-height: max-content;
 	height: auto;

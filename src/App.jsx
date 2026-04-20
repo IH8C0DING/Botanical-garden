@@ -125,12 +125,18 @@ function App() {
 
   useEffect(() => {
     const root = document.getElementById('root')
-    if (!root) return
+    const html = document.documentElement
+    const body = document.body
+    if (!root || !html || !body) return
 
     const isPlantScreen = activeScreen === 'plant'
+    html.classList.toggle('plant-screen', isPlantScreen)
+    body.classList.toggle('plant-screen', isPlantScreen)
     root.classList.toggle('is-plant-screen', isPlantScreen)
 
     return () => {
+      html.classList.remove('plant-screen')
+      body.classList.remove('plant-screen')
       root.classList.remove('is-plant-screen')
     }
   }, [activeScreen])
