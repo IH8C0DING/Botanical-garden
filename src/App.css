@@ -48,8 +48,8 @@
 		--bottom-nav-height: clamp(126px, 30vw, 188px);
 		--capture-size: clamp(126px, 32vw, 184px);
 		--scanner-width: min(118vw, 780px);
-		--scan-status-width: clamp(370px, 98vw, 640px);
-		--add-plant-width: min(104vw, 760px);
+		--scan-status-width: clamp(410px, 100vw, 720px);
+		--add-plant-width: min(110vw, 820px);
 		--nav-center-size: clamp(112px, 28vw, 162px);
 		--nav-center-icon-size: clamp(42px, 10vw, 58px);
 		--scan-status-font-size: clamp(1.2rem, 5.1vw, 1.6rem);
@@ -178,9 +178,10 @@ button {
 	backdrop-filter: blur(7px);
 	border: 1px solid rgb(255 255 255 / 25%);
 	border-radius: 16px;
-	padding: clamp(12px, 3vw, 18px) clamp(14px, 4vw, 24px);
+	padding: clamp(16px, 4vw, 24px) clamp(18px, 5vw, 30px);
 	transform: translate(-50%, -50%);
 	pointer-events: none;
+	z-index: 8;
 	animation: scanStatusIn 260ms ease-out both;
 }
 
@@ -189,7 +190,7 @@ button {
 }
 
 .scan-status-text {
-	margin: 0 0 clamp(8px, 2.2vw, 14px);
+	margin: 0 0 clamp(10px, 2.8vw, 18px);
 	font-size: var(--scan-status-font-size);
 	font-weight: 600;
 	letter-spacing: 0.02em;
@@ -273,7 +274,7 @@ button {
 
 .position-hint {
 	margin: 0;
-	padding: clamp(16px, 4.2vw, 26px) clamp(28px, 7vw, 44px);
+	padding: clamp(18px, 4.8vw, 30px) clamp(30px, 7.8vw, 50px);
 	font-size: var(--hint-font-size);
 	line-height: 1.05;
 	color: #1f1f1f;
@@ -318,13 +319,13 @@ button {
 .add-plant-button {
 	position: absolute;
 	left: 50%;
-	bottom: calc(var(--bottom-nav-height) + 2px);
+	bottom: calc(var(--bottom-nav-height) + 26px);
 	transform: translateX(-50%);
 	width: var(--add-plant-width);
 	background: transparent;
 	padding: 0;
 	display: block;
-	z-index: 7;
+	z-index: 9;
 	animation: addPlantIn 260ms ease-out, addPlantFloat 2.8s ease-in-out 260ms infinite;
 }
 
@@ -407,7 +408,7 @@ button {
 .nav-center-button {
 	position: absolute;
 	left: 50%;
-	bottom: calc(var(--bottom-nav-height) * 0.22);
+	bottom: calc(var(--bottom-nav-height) * 0.12);
 	transform: translateX(-50%);
 	width: var(--nav-center-size);
 	height: var(--nav-center-size);
