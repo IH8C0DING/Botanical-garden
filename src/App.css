@@ -511,6 +511,8 @@ button {
 	height: auto;
 	background: #dde4ee;
 	position: relative;
+	margin-inline: -8px;
+	width: calc(100% + 16px);
 	overflow: hidden;
 }
 
@@ -536,7 +538,7 @@ button {
 
 .plant-name {
 	margin: 0;
-	font-size: 3.55rem;
+	font-size: 3.85rem;
 	font-weight: 700;
 	line-height: 1;
 }
@@ -546,17 +548,17 @@ button {
 	align-items: center;
 	gap: 18px;
 	color: #1d1d1d;
-	font-size: 1.75rem;
+	font-size: 1.9rem;
 }
 
 .plant-age-pill button {
-	width: 62px;
-	height: 62px;
+	width: 66px;
+	height: 66px;
 	border-radius: 999px;
 	border: 1px solid #d6d6d6;
 	background: #efefef;
 	color: #333;
-	font-size: 2.6rem;
+	font-size: 2.8rem;
 	line-height: 1;
 	display: grid;
 	place-items: center;
@@ -573,11 +575,11 @@ button {
 .plant-stat-card {
 	background: #f3f3f3;
 	border-radius: 36px;
-	padding: 50px 38px;
+	padding: 56px 42px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	font-size: 1.92rem;
+	font-size: 2.12rem;
 	box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
 }
 
@@ -595,7 +597,7 @@ button {
 
 .plant-section-title {
 	margin: 48px 0 14px;
-	font-size: 3.6rem;
+	font-size: 3.9rem;
 	line-height: 1.08;
 	font-weight: 700;
 }
@@ -603,7 +605,7 @@ button {
 .plant-todo-card {
 	background: #f5f5f5;
 	border-radius: 36px;
-	padding: 32px;
+	padding: 36px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -613,7 +615,7 @@ button {
 
 .todo-image {
 	width: clamp(240px, 56vw, 320px);
-	height: 170px;
+	height: 184px;
 	border-radius: 24px;
 	box-shadow: 0 4px 11px rgb(0 0 0 / 10%);
 	flex-shrink: 0;
@@ -626,9 +628,9 @@ button {
 	border-radius: 999px;
 	background: #f26b4f;
 	color: #fff;
-	font-size: 1.75rem;
-	padding: 24px 38px;
-	min-width: 196px;
+	font-size: 1.9rem;
+	padding: 26px 42px;
+	min-width: 214px;
 	text-align: center;
 }
 
@@ -642,7 +644,7 @@ button {
 }
 
 .collection-image {
-	height: 560px;
+	height: 620px;
 	width: 100%;
 	object-fit: cover;
 	display: block;
@@ -650,13 +652,13 @@ button {
 
 .collection-meta {
 	margin: 16px 12px 0;
-	padding: 30px 34px;
+	padding: 34px 38px;
 	border-radius: 20px;
 	border: 1px solid #bfe2e2;
 	display: flex;
 	justify-content: space-between;
 	gap: 14px;
-	font-size: 1.9rem;
+	font-size: 2.05rem;
 	background: #f2f2f2;
 }
 
