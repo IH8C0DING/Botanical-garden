@@ -52,7 +52,7 @@
 		--add-plant-width: min(116vw, 900px);
 		--nav-center-size: clamp(112px, 28vw, 162px);
 		--nav-center-icon-size: clamp(42px, 10vw, 58px);
-		--scan-status-font-size: clamp(1.35rem, 5.8vw, 1.85rem);
+		--scan-status-font-size: clamp(1.55rem, 6.8vw, 2.2rem);
 		--hint-font-size: clamp(1.5rem, 6.4vw, 2.1rem);
 		--scan-progress-height: clamp(12px, 3vw, 18px);
 	}
@@ -190,7 +190,7 @@ button {
 }
 
 .scan-status-text {
-	margin: 0 0 clamp(12px, 3vw, 20px);
+	margin: 0 0 clamp(14px, 3.4vw, 24px);
 	font-size: var(--scan-status-font-size);
 	font-weight: 600;
 	letter-spacing: 0.02em;
@@ -319,7 +319,7 @@ button {
 .add-plant-button {
 	position: absolute;
 	left: 50%;
-	bottom: calc(var(--bottom-nav-height) + 6px);
+	bottom: calc(var(--bottom-nav-height) - 34px);
 	transform: translateX(-50%);
 	width: var(--add-plant-width);
 	background: transparent;
@@ -407,8 +407,8 @@ button {
 
 .nav-center-button {
 	position: absolute;
-	left: calc(50% + 6px);
-	bottom: calc(var(--bottom-nav-height) * 0.08);
+	left: calc(50% + 10px);
+	bottom: calc(var(--bottom-nav-height) * 0.06);
 	transform: translateX(-50%);
 	width: var(--nav-center-size);
 	height: var(--nav-center-size);
