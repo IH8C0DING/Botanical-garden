@@ -15,6 +15,7 @@
 	--nav-center-icon-size: 24px;
 	--scan-status-font-size: 0.84rem;
 	--hint-font-size: 0.92rem;
+	--scan-progress-height: 7px;
 }
 
 #root {
@@ -44,15 +45,16 @@
 	}
 
 	:root {
-		--bottom-nav-height: clamp(118px, 27vw, 172px);
-		--capture-size: clamp(92px, 22vw, 128px);
-		--scanner-width: min(92vw, 500px);
-		--scan-status-width: clamp(280px, 82vw, 420px);
-		--add-plant-width: min(92vw, 500px);
-		--nav-center-size: clamp(92px, 22vw, 128px);
-		--nav-center-icon-size: clamp(34px, 8vw, 48px);
-		--scan-status-font-size: clamp(1.05rem, 4.3vw, 1.38rem);
-		--hint-font-size: clamp(1.05rem, 4.1vw, 1.32rem);
+		--bottom-nav-height: clamp(142px, 34vw, 220px);
+		--capture-size: clamp(114px, 29vw, 168px);
+		--scanner-width: min(98vw, 620px);
+		--scan-status-width: clamp(340px, 94vw, 560px);
+		--add-plant-width: min(97vw, 620px);
+		--nav-center-size: clamp(112px, 28vw, 162px);
+		--nav-center-icon-size: clamp(42px, 10vw, 58px);
+		--scan-status-font-size: clamp(1.2rem, 5.1vw, 1.6rem);
+		--hint-font-size: clamp(1.18rem, 4.9vw, 1.52rem);
+		--scan-progress-height: clamp(10px, 2.8vw, 16px);
 	}
 }
 
@@ -196,7 +198,7 @@ button {
 }
 
 .scan-progress-track {
-	height: 7px;
+	height: var(--scan-progress-height);
 	border-radius: 999px;
 	overflow: hidden;
 	background: rgb(255 255 255 / 24%);
@@ -316,7 +318,7 @@ button {
 .add-plant-button {
 	position: absolute;
 	left: 50%;
-	bottom: calc(var(--bottom-nav-height) + 28px);
+	bottom: calc(var(--bottom-nav-height) + 40px);
 	transform: translateX(-50%);
 	width: var(--add-plant-width);
 	background: transparent;
@@ -405,7 +407,7 @@ button {
 .nav-center-button {
 	position: absolute;
 	left: calc(50% + 9px);
-	bottom: calc(var(--bottom-nav-height) * 0.06);
+	bottom: calc(var(--bottom-nav-height) * 0.05);
 	transform: translateX(-50%);
 	width: var(--nav-center-size);
 	height: var(--nav-center-size);
