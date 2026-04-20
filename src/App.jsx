@@ -5,6 +5,10 @@ import captureButtonSvg from './public/button.svg'
 import scanIndicatorSvg from './public/scanner.svg'
 import centerScanIcon from './public/Vector.svg'
 import addPlantButtonSvg from './public/addplant.svg'
+import homeIcon from './public/home icon.svg'
+import collectionIcon from './public/path icon.svg'
+import plantIcon from './public/plant icon.svg'
+import profileIcon from './public/profile icon.svg'
 
 const MOBILE_MAX_WIDTH = 1100
 
@@ -21,6 +25,100 @@ const getIsMobileViewport = () => {
   const isNarrowViewport = window.matchMedia(`(max-width: ${MOBILE_MAX_WIDTH}px)`).matches
 
   return isTouchDevice || isNarrowViewport
+}
+
+function PlantOverviewPage({ onOpenScanner }) {
+  return (
+    <main className="plant-page-shell">
+      <section className="plant-hero" aria-label="Plant overview hero">
+        <div className="plant-hero-sprout" aria-hidden="true">
+          <span className="sprout-stem" />
+          <span className="sprout-leaf sprout-leaf-left" />
+          <span className="sprout-leaf sprout-leaf-right" />
+          <span className="sprout-soil" />
+        </div>
+      </section>
+
+      <section className="plant-content">
+        <div className="plant-header-row">
+          <h1 className="plant-name">Sunny</h1>
+          <div className="plant-age-pill">
+            <button type="button" aria-label="Previous week">&#8249;</button>
+            <span>6 weeks</span>
+            <button type="button" aria-label="Next week">&#8250;</button>
+          </div>
+        </div>
+
+        <div className="plant-stats-list">
+          <article className="plant-stat-card">
+            <span>Water</span>
+            <strong className="ok">50% good</strong>
+          </article>
+          <article className="plant-stat-card">
+            <span>Soil</span>
+            <strong className="bad">10% bad</strong>
+          </article>
+          <article className="plant-stat-card">
+            <span>Fertilizer</span>
+            <strong className="ok">20% good</strong>
+          </article>
+          <article className="plant-stat-card">
+            <span>Temperature</span>
+            <strong className="ok">22C good</strong>
+          </article>
+        </div>
+
+        <h2 className="plant-section-title">To Do</h2>
+        <div className="plant-todo-list">
+          <article className="plant-todo-card">
+            <div className="plant-todo-image waterfall" aria-hidden="true" />
+            <button type="button" className="plant-todo-action">Water me</button>
+          </article>
+          <article className="plant-todo-card">
+            <div className="plant-todo-image prune" aria-hidden="true" />
+            <button type="button" className="plant-todo-action">Cut me</button>
+          </article>
+          <article className="plant-todo-card">
+            <div className="plant-todo-image repot" aria-hidden="true" />
+            <button type="button" className="plant-todo-action">Repot me</button>
+          </article>
+        </div>
+
+        <h2 className="plant-section-title">See Your Collection</h2>
+        <article className="collection-card">
+          <div className="collection-preview" aria-hidden="true">
+            <div className="cactus-shape" />
+          </div>
+          <div className="collection-meta">
+            <p>Alberto the Cactus</p>
+            <p>2 years old</p>
+          </div>
+        </article>
+      </section>
+
+      <nav className="plant-bottom-nav" aria-label="Bottom navigation">
+        <button type="button" className="nav-item" onClick={onOpenScanner}>
+          <img src={homeIcon} alt="" aria-hidden="true" />
+          <span>Home</span>
+        </button>
+        <button type="button" className="nav-item" aria-label="Collection">
+          <img src={collectionIcon} alt="" aria-hidden="true" />
+          <span>Collection</span>
+        </button>
+        <button type="button" className="nav-item nav-item-center is-active" aria-current="page" aria-label="Add plant">
+          <span className="plus-symbol">+</span>
+        </button>
+        <button type="button" className="nav-item" aria-label="Plant">
+          <img src={plantIcon} alt="" aria-hidden="true" />
+          <span>Plant</span>
+        </button>
+        <button type="button" className="nav-item" aria-label="Profile">
+          <img src={profileIcon} alt="" aria-hidden="true" />
+          <span>Profile</span>
+        </button>
+      </nav>
+    </main>
+  )
 }
 
 function App() {
@@ -41,6 +139,7 @@ function App() {
   const [isRecognitionClosing, setIsRecognitionClosing] = useState(false)
   const [isAddPlantClosing, setIsAddPlantClosing] = useState(false)
   const [isMobileViewport, setIsMobileViewport] = useState(getIsMobileViewport)
+  const [activeScreen, setActiveScreen] = useState('scanner')
 
   useEffect(() => {
     const handleViewportChange = () => {
@@ -128,7 +227,7 @@ function App() {
   }, [stopCamera])
 
   useEffect(() => {
-    if (!isMobileViewport) {
+    if (!isMobileViewport || activeScreen !== 'scanner') {
       clearScanTimers()
       stopCamera()
       return
@@ -140,7 +239,7 @@ function App() {
       clearScanTimers()
       stopCamera()
     }
-  }, [clearScanTimers, isMobileViewport, startCamera, stopCamera])
+  }, [activeScreen, clearScanTimers, isMobileViewport, startCamera, stopCamera])
 
   const handleCapture = () => {
     if (!videoRef.current || !isCameraReady) return
@@ -201,6 +300,7 @@ function App() {
       setShowRecognitionStatus(false)
       setIsRecognitionClosing(false)
       setIsAddPlantClosing(false)
+      setActiveScreen('plant')
       addPlantCloseTimerRef.current = null
     }, 260)
   }
@@ -215,6 +315,10 @@ function App() {
         </section>
       </main>
     )
+  }
+
+  if (activeScreen === 'plant') {
+    return <PlantOverviewPage onOpenScanner={() => setActiveScreen('scanner')} />
   }
 
   return (
@@ -260,9 +364,14 @@ function App() {
       </section>
 
       <img src={bottomNavFrame} alt="" aria-hidden="true" className="bottom-nav-frame" />
-      <div className="nav-center-button" aria-hidden="true">
+      <button
+        type="button"
+        className="nav-center-button"
+        aria-label="Open add plant page"
+        onClick={() => setActiveScreen('plant')}
+      >
         <img src={centerScanIcon} alt="" />
-      </div>
+      </button>
 
       {scanPhase === 'found' ? (
         <button
