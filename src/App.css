@@ -47,7 +47,7 @@
 	:root {
 		--bottom-nav-height: clamp(126px, 30vw, 188px);
 		--capture-size: clamp(126px, 32vw, 184px);
-		--scanner-width: min(128vw, 860px);
+		--scanner-width: min(96vw, 680px);
 		--scan-status-width: clamp(460px, 100vw, 760px);
 		--add-plant-width: min(116vw, 900px);
 		--nav-center-size: clamp(112px, 28vw, 162px);
