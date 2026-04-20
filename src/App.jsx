@@ -5,10 +5,6 @@ import captureButtonSvg from './public/button.svg'
 import scanIndicatorSvg from './public/scanner.svg'
 import centerScanIcon from './public/Vector.svg'
 import addPlantButtonSvg from './public/addplant.svg'
-import homeIcon from './public/home icon.svg'
-import collectionIcon from './public/path icon.svg'
-import plantIcon from './public/plant icon.svg'
-import profileIcon from './public/profile icon.svg'
 
 const MOBILE_MAX_WIDTH = 1100
 
@@ -31,12 +27,7 @@ function PlantOverviewPage({ onOpenScanner }) {
   return (
     <main className="plant-page-shell">
       <section className="plant-hero" aria-label="Plant overview hero">
-        <div className="plant-hero-sprout" aria-hidden="true">
-          <span className="sprout-stem" />
-          <span className="sprout-leaf sprout-leaf-left" />
-          <span className="sprout-leaf sprout-leaf-right" />
-          <span className="sprout-soil" />
-        </div>
+        <div className="image-slot hero-image-slot" role="img" aria-label="Hero plant image placeholder" />
       </section>
 
       <section className="plant-content">
@@ -71,24 +62,22 @@ function PlantOverviewPage({ onOpenScanner }) {
         <h2 className="plant-section-title">To Do</h2>
         <div className="plant-todo-list">
           <article className="plant-todo-card">
-            <div className="plant-todo-image waterfall" aria-hidden="true" />
+            <div className="image-slot todo-image-slot" role="img" aria-label="Water task image placeholder" />
             <button type="button" className="plant-todo-action">Water me</button>
           </article>
           <article className="plant-todo-card">
-            <div className="plant-todo-image prune" aria-hidden="true" />
+            <div className="image-slot todo-image-slot" role="img" aria-label="Cut task image placeholder" />
             <button type="button" className="plant-todo-action">Cut me</button>
           </article>
           <article className="plant-todo-card">
-            <div className="plant-todo-image repot" aria-hidden="true" />
+            <div className="image-slot todo-image-slot" role="img" aria-label="Repot task image placeholder" />
             <button type="button" className="plant-todo-action">Repot me</button>
           </article>
         </div>
 
         <h2 className="plant-section-title">See Your Collection</h2>
         <article className="collection-card">
-          <div className="collection-preview" aria-hidden="true">
-            <div className="cactus-shape" />
-          </div>
+          <div className="image-slot collection-image-slot" role="img" aria-label="Collection image placeholder" />
           <div className="collection-meta">
             <p>Alberto the Cactus</p>
             <p>2 years old</p>
@@ -96,27 +85,15 @@ function PlantOverviewPage({ onOpenScanner }) {
         </article>
       </section>
 
-      <nav className="plant-bottom-nav" aria-label="Bottom navigation">
-        <button type="button" className="nav-item" onClick={onOpenScanner}>
-          <img src={homeIcon} alt="" aria-hidden="true" />
-          <span>Home</span>
-        </button>
-        <button type="button" className="nav-item" aria-label="Collection">
-          <img src={collectionIcon} alt="" aria-hidden="true" />
-          <span>Collection</span>
-        </button>
-        <button type="button" className="nav-item nav-item-center is-active" aria-current="page" aria-label="Add plant">
-          <span className="plus-symbol">+</span>
-        </button>
-        <button type="button" className="nav-item" aria-label="Plant">
-          <img src={plantIcon} alt="" aria-hidden="true" />
-          <span>Plant</span>
-        </button>
-        <button type="button" className="nav-item" aria-label="Profile">
-          <img src={profileIcon} alt="" aria-hidden="true" />
-          <span>Profile</span>
-        </button>
-      </nav>
+      <img src={bottomNavFrame} alt="" aria-hidden="true" className="bottom-nav-frame" />
+      <button
+        type="button"
+        className="nav-center-button"
+        aria-label="Back to scanner"
+        onClick={onOpenScanner}
+      >
+        <img src={centerScanIcon} alt="" />
+      </button>
     </main>
   )
 }

@@ -485,9 +485,9 @@ button {
 
 .plant-page-shell {
 	min-height: 100dvh;
-	width: 100%;
-	max-width: 430px;
-	margin: 0 auto;
+	width: 100vw;
+	max-width: none;
+	margin: 0;
 	background: #e8e8e8;
 	color: #131313;
 	padding-bottom: 106px;
@@ -497,83 +497,25 @@ button {
 
 .plant-hero {
 	height: 382px;
-	background:
-		radial-gradient(140% 70% at 50% 100%, #f2e65a 0%, #d6d95a 42%, #b4cb72 67%, #93b683 82%, #cdd7ea 100%),
-		linear-gradient(180deg, #ccdae7 0%, #edf0f7 34%, #b8cb8d 100%);
+	background: #dde4ee;
 	position: relative;
 	overflow: hidden;
 }
 
-.plant-hero::before,
-.plant-hero::after {
-	content: '';
-	position: absolute;
-	bottom: 40px;
-	width: 44%;
-	height: 110px;
-	background: radial-gradient(90% 80% at 50% 100%, #96b36a 0%, rgb(150 179 106 / 0%) 68%);
-	filter: blur(0.2px);
-	opacity: 0.64;
+
+.image-slot {
+	display: block;
+	border-radius: 20px;
+	border: 1px dashed rgb(0 0 0 / 16%);
+	background: linear-gradient(145deg, #f4f4f4, #e4e4e4);
 }
 
-.plant-hero::before {
-	left: -4%;
-}
-
-.plant-hero::after {
-	right: -4%;
-}
-
-.plant-hero-sprout {
-	position: absolute;
-	left: 50%;
-	bottom: 78px;
-	transform: translateX(-50%);
-	width: 120px;
-	height: 120px;
-}
-
-.sprout-stem {
-	position: absolute;
-	left: 50%;
-	bottom: 34px;
-	width: 11px;
-	height: 56px;
-	background: linear-gradient(180deg, #85c82a, #4e8920);
-	transform: translateX(-50%);
-	border-radius: 9px;
-}
-
-.sprout-leaf {
-	position: absolute;
-	bottom: 69px;
-	width: 43px;
-	height: 27px;
-	background: linear-gradient(160deg, #90ca34 0%, #6ca82d 48%, #4c7f21 100%);
-	border-radius: 90% 20% 90% 20%;
-	box-shadow: inset -2px -2px 4px rgb(0 0 0 / 12%);
-}
-
-.sprout-leaf-left {
-	left: 12px;
-	transform: rotate(-27deg);
-}
-
-.sprout-leaf-right {
-	right: 12px;
-	transform: scaleX(-1) rotate(-27deg);
-}
-
-.sprout-soil {
-	position: absolute;
-	left: 50%;
-	bottom: 8px;
-	transform: translateX(-50%);
-	width: 136px;
-	height: 34px;
-	border-radius: 50%;
-	background: radial-gradient(65% 120% at 50% 30%, #ad5f2a 0%, #8a3f17 70%);
-	box-shadow: 0 7px 14px rgb(124 52 18 / 30%);
+.hero-image-slot {
+	height: 100%;
+	width: 100%;
+	border-radius: 0;
+	border: 0;
+	background: linear-gradient(180deg, #d5deea, #edf0f6);
 }
 
 .plant-content {
@@ -665,32 +607,12 @@ button {
 	box-shadow: 0 2px 10px rgb(0 0 0 / 8%);
 }
 
-.plant-todo-image {
+.todo-image-slot {
 	width: 164px;
 	height: 78px;
 	border-radius: 20px;
-	box-shadow: 0 4px 11px rgb(0 0 0 / 15%);
-	background-size: cover;
-	background-position: center;
+	box-shadow: 0 4px 11px rgb(0 0 0 / 10%);
 	flex-shrink: 0;
-}
-
-.plant-todo-image.waterfall {
-	background:
-		linear-gradient(180deg, rgb(183 221 255 / 88%), rgb(132 205 255 / 70%)),
-		radial-gradient(95% 80% at 30% 100%, #8fd36f 0%, #4a8d42 70%);
-}
-
-.plant-todo-image.prune {
-	background:
-		linear-gradient(180deg, rgb(196 240 156 / 85%), rgb(126 188 87 / 80%)),
-		radial-gradient(95% 80% at 70% 100%, #6fb44f 0%, #3b7d37 72%);
-}
-
-.plant-todo-image.repot {
-	background:
-		linear-gradient(180deg, rgb(247 227 142 / 90%), rgb(189 221 114 / 80%)),
-		radial-gradient(95% 80% at 35% 95%, #79b35a 0%, #4e8d45 72%);
 }
 
 .plant-todo-action {
@@ -712,41 +634,8 @@ button {
 	overflow: hidden;
 }
 
-.collection-preview {
+.collection-image-slot {
 	height: 220px;
-	background: linear-gradient(180deg, #c6e5e5 0%, #dff0d3 66%, #ecf4df 100%);
-	position: relative;
-	display: grid;
-	place-items: center;
-}
-
-.cactus-shape {
-	width: 86px;
-	height: 132px;
-	border-radius: 38px;
-	background: linear-gradient(180deg, #588b35, #3a6f2d);
-	position: relative;
-}
-
-.cactus-shape::before,
-.cactus-shape::after {
-	content: '';
-	position: absolute;
-	top: 46px;
-	width: 30px;
-	height: 54px;
-	border-radius: 20px;
-	background: linear-gradient(180deg, #6a9a41, #3f742f);
-}
-
-.cactus-shape::before {
-	left: -22px;
-	transform: rotate(23deg);
-}
-
-.cactus-shape::after {
-	right: -22px;
-	transform: rotate(-23deg);
 }
 
 .collection-meta {
@@ -766,57 +655,3 @@ button {
 	line-height: 1.15;
 }
 
-.plant-bottom-nav {
-	position: fixed;
-	left: 50%;
-	bottom: 0;
-	transform: translateX(-50%);
-	width: min(430px, 100vw);
-	height: 88px;
-	background: #efefef;
-	border-top: 1px solid #d9d9d9;
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	align-items: center;
-	padding: 10px 8px 8px;
-	z-index: 30;
-}
-
-.nav-item {
-	display: grid;
-	justify-items: center;
-	gap: 4px;
-	color: #9b9b9b;
-	border: 0;
-	background: transparent;
-	font-size: 0.96rem;
-	padding: 0;
-}
-
-.nav-item img {
-	width: 24px;
-	height: 24px;
-	opacity: 0.65;
-}
-
-.nav-item-center {
-	width: 54px;
-	height: 54px;
-	border-radius: 50%;
-	margin: 0 auto;
-	align-self: start;
-	background: #f26b4f;
-	color: #fff;
-	box-shadow: 0 8px 18px rgb(242 107 79 / 35%);
-}
-
-.nav-item-center .plus-symbol {
-	font-size: 2rem;
-	line-height: 1;
-	font-weight: 500;
-	transform: translateY(-3px);
-}
-
-.nav-item.is-active {
-	color: #fff;
-}
