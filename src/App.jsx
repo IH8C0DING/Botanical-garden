@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { HashRouter, Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import './App.css'
 import bottomNavFrame from './public/Frame.svg'
 import captureButtonSvg from './public/button.svg'
@@ -28,7 +29,21 @@ const getIsMobileViewport = () => {
   return isTouchDevice || isNarrowViewport
 }
 
-function PlantOverviewPage({ onOpenScanner }) {
+function DesktopOnlyNotice() {
+  return (
+    <main className="desktop-only-shell" role="alert" aria-live="polite">
+      <section className="desktop-only-card">
+        <h1>Mobile app only</h1>
+        <p>This experience is designed for phone screens.</p>
+        <p>Open this app on your mobile device to use the camera scanner.</p>
+      </section>
+    </main>
+  )
+}
+
+function PlantOverviewPage() {
+  const navigate = useNavigate()
+
   return (
     <main className="plant-page-shell">
       <section className="plant-hero" aria-label="Plant overview hero">
@@ -95,7 +110,7 @@ function PlantOverviewPage({ onOpenScanner }) {
         type="button"
         className="nav-center-button plant-nav-center-button"
         aria-label="Back to scanner"
-        onClick={onOpenScanner}
+        onClick={() => navigate('/')}
       >
         <img src={centerScanIcon} alt="" />
       </button>
@@ -103,7 +118,8 @@ function PlantOverviewPage({ onOpenScanner }) {
   )
 }
 
-function App() {
+function ScannerPage() {
+  const navigate = useNavigate()
   const videoRef = useRef(null)
   const streamRef = useRef(null)
   const scanProgressTimerRef = useRef(null)
@@ -120,23 +136,6 @@ function App() {
   const [showRecognitionStatus, setShowRecognitionStatus] = useState(false)
   const [isRecognitionClosing, setIsRecognitionClosing] = useState(false)
   const [isAddPlantClosing, setIsAddPlantClosing] = useState(false)
-  const [isMobileViewport, setIsMobileViewport] = useState(getIsMobileViewport)
-  const [activeScreen, setActiveScreen] = useState('scanner')
-
-  useEffect(() => {
-    const handleViewportChange = () => {
-      setIsMobileViewport(getIsMobileViewport())
-    }
-
-    handleViewportChange()
-    window.addEventListener('resize', handleViewportChange)
-    window.addEventListener('orientationchange', handleViewportChange)
-
-    return () => {
-      window.removeEventListener('resize', handleViewportChange)
-      window.removeEventListener('orientationchange', handleViewportChange)
-    }
-  }, [])
 
   const clearScanTimers = useCallback(() => {
     if (scanProgressTimerRef.current) {
@@ -209,19 +208,13 @@ function App() {
   }, [stopCamera])
 
   useEffect(() => {
-    if (!isMobileViewport || activeScreen !== 'scanner') {
-      clearScanTimers()
-      stopCamera()
-      return
-    }
-
     startCamera()
 
     return () => {
       clearScanTimers()
       stopCamera()
     }
-  }, [activeScreen, clearScanTimers, isMobileViewport, startCamera, stopCamera])
+  }, [clearScanTimers, startCamera, stopCamera])
 
   const handleCapture = () => {
     if (!videoRef.current || !isCameraReady) return
@@ -282,25 +275,9 @@ function App() {
       setShowRecognitionStatus(false)
       setIsRecognitionClosing(false)
       setIsAddPlantClosing(false)
-      setActiveScreen('plant')
+      navigate('/plant')
       addPlantCloseTimerRef.current = null
     }, 260)
-  }
-
-  if (!isMobileViewport) {
-    return (
-      <main className="desktop-only-shell" role="alert" aria-live="polite">
-        <section className="desktop-only-card">
-          <h1>Mobile app only</h1>
-          <p>This experience is designed for phone screens.</p>
-          <p>Open this app on your mobile device to use the camera scanner.</p>
-        </section>
-      </main>
-    )
-  }
-
-  if (activeScreen === 'plant') {
-    return <PlantOverviewPage onOpenScanner={() => setActiveScreen('scanner')} />
   }
 
   return (
@@ -350,7 +327,7 @@ function App() {
         type="button"
         className="nav-center-button"
         aria-label="Open add plant page"
-        onClick={() => setActiveScreen('plant')}
+        onClick={() => navigate('/plant')}
       >
         <img src={centerScanIcon} alt="" />
       </button>
@@ -366,6 +343,39 @@ function App() {
         </button>
       ) : null}
     </main>
+  )
+}
+
+function App() {
+  const [isMobileViewport, setIsMobileViewport] = useState(getIsMobileViewport)
+
+  useEffect(() => {
+    const handleViewportChange = () => {
+      setIsMobileViewport(getIsMobileViewport())
+    }
+
+    handleViewportChange()
+    window.addEventListener('resize', handleViewportChange)
+    window.addEventListener('orientationchange', handleViewportChange)
+
+    return () => {
+      window.removeEventListener('resize', handleViewportChange)
+      window.removeEventListener('orientationchange', handleViewportChange)
+    }
+  }, [])
+
+  if (!isMobileViewport) {
+    return <DesktopOnlyNotice />
+  }
+
+  return (
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<ScannerPage />} />
+        <Route path="/plant" element={<PlantOverviewPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </HashRouter>
   )
 }
 
