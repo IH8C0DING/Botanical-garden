@@ -13,6 +13,8 @@
 	--add-plant-width: min(286px, calc(100% - 56px));
 	--nav-center-size: 60px;
 	--nav-center-icon-size: 24px;
+	--scan-status-font-size: 0.84rem;
+	--hint-font-size: 0.92rem;
 }
 
 #root {
@@ -42,13 +44,15 @@
 	}
 
 	:root {
-		--bottom-nav-height: clamp(86px, 18vw, 112px);
-		--capture-size: clamp(70px, 16.5vw, 92px);
-		--scanner-width: min(80vw, 360px);
-		--scan-status-width: clamp(220px, 62vw, 320px);
-		--add-plant-width: min(82vw, 360px);
-		--nav-center-size: clamp(64px, 15vw, 84px);
-		--nav-center-icon-size: clamp(26px, 6vw, 34px);
+		--bottom-nav-height: clamp(118px, 27vw, 172px);
+		--capture-size: clamp(92px, 22vw, 128px);
+		--scanner-width: min(92vw, 500px);
+		--scan-status-width: clamp(280px, 82vw, 420px);
+		--add-plant-width: min(92vw, 500px);
+		--nav-center-size: clamp(92px, 22vw, 128px);
+		--nav-center-icon-size: clamp(34px, 8vw, 48px);
+		--scan-status-font-size: clamp(1.05rem, 4.3vw, 1.38rem);
+		--hint-font-size: clamp(1.05rem, 4.1vw, 1.32rem);
 	}
 }
 
@@ -150,11 +154,11 @@ button {
 .capture-stack {
 	position: absolute;
 	left: 50%;
-	bottom: 96px;
+	bottom: calc(var(--bottom-nav-height) + 14px);
 	transform: translateX(-50%);
 	display: grid;
 	justify-items: center;
-	gap: 10px;
+	gap: clamp(10px, 2.4vw, 20px);
 	z-index: 2;
 	pointer-events: none;
 }
@@ -184,7 +188,7 @@ button {
 
 .scan-status-text {
 	margin: 0 0 6px;
-	font-size: 0.84rem;
+	font-size: var(--scan-status-font-size);
 	font-weight: 600;
 	letter-spacing: 0.02em;
 	text-align: center;
@@ -267,8 +271,8 @@ button {
 
 .position-hint {
 	margin: 0;
-	padding: 10px 18px;
-	font-size: 0.92rem;
+	padding: clamp(10px, 2.5vw, 16px) clamp(18px, 5vw, 30px);
+	font-size: var(--hint-font-size);
 	line-height: 1;
 	color: #1f1f1f;
 	background: rgb(255 255 255 / 58%);
@@ -312,7 +316,7 @@ button {
 .add-plant-button {
 	position: absolute;
 	left: 50%;
-	bottom: 112px;
+	bottom: calc(var(--bottom-nav-height) + 28px);
 	transform: translateX(-50%);
 	width: var(--add-plant-width);
 	background: transparent;
@@ -401,7 +405,7 @@ button {
 .nav-center-button {
 	position: absolute;
 	left: calc(50% + 9px);
-	bottom: calc(var(--bottom-nav-height) * 0.09);
+	bottom: calc(var(--bottom-nav-height) * 0.06);
 	transform: translateX(-50%);
 	width: var(--nav-center-size);
 	height: var(--nav-center-size);
@@ -425,12 +429,7 @@ button {
 		justify-content: stretch;
 	}
 
-	.capture-btn {
-		width: 64px;
-		height: 64px;
-	}
-
 	.capture-stack {
-		bottom: 92px;
+		bottom: calc(var(--bottom-nav-height) + 12px);
 	}
 }
