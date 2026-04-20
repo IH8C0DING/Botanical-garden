@@ -6,6 +6,13 @@
 	--accent: #2fbf71;
 	--accent-strong: #22a35f;
 	--danger: #ff7d7d;
+	--bottom-nav-height: 79px;
+	--capture-size: 64px;
+	--scanner-width: min(266px, calc(100vw - 28px));
+	--scan-status-width: clamp(196px, 52vw, 260px);
+	--add-plant-width: min(286px, calc(100% - 56px));
+	--nav-center-size: 60px;
+	--nav-center-icon-size: 24px;
 }
 
 #root {
@@ -33,6 +40,16 @@
 	.app-shell {
 		max-width: none;
 	}
+
+	:root {
+		--bottom-nav-height: clamp(86px, 18vw, 112px);
+		--capture-size: clamp(70px, 16.5vw, 92px);
+		--scanner-width: min(80vw, 360px);
+		--scan-status-width: clamp(220px, 62vw, 320px);
+		--add-plant-width: min(82vw, 360px);
+		--nav-center-size: clamp(64px, 15vw, 84px);
+		--nav-center-icon-size: clamp(26px, 6vw, 34px);
+	}
 }
 
 .camera-stage {
@@ -40,7 +57,7 @@
 	top: 0;
 	left: 0;
 	right: 0;
-	bottom: 79px;
+	bottom: var(--bottom-nav-height);
 	background: #07090d;
 	overflow: hidden;
 }
@@ -108,8 +125,8 @@ button {
 }
 
 .capture-btn {
-	width: 64px;
-	height: 64px;
+	width: var(--capture-size);
+	height: var(--capture-size);
 	background: transparent;
 	display: block;
 	padding: 0;
@@ -150,7 +167,7 @@ button {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	width: min(196px, calc(100vw - 140px));
+	width: var(--scan-status-width);
 	background: rgb(16 19 25 / 58%);
 	backdrop-filter: blur(7px);
 	border: 1px solid rgb(255 255 255 / 25%);
@@ -196,7 +213,7 @@ button {
 
 .scan-indicator {
 	display: block;
-	width: min(266px, calc(100vw - 28px));
+	width: var(--scanner-width);
 	height: auto;
 	pointer-events: none;
 	opacity: 0.95;
@@ -205,7 +222,7 @@ button {
 
 .scan-wrap {
 	position: relative;
-	width: min(266px, calc(100vw - 28px));
+	width: var(--scanner-width);
 	animation: scannerPulse 2.2s ease-in-out infinite;
 }
 
@@ -297,7 +314,7 @@ button {
 	left: 50%;
 	bottom: 112px;
 	transform: translateX(-50%);
-	width: min(286px, calc(100% - 56px));
+	width: var(--add-plant-width);
 	background: transparent;
 	padding: 0;
 	display: block;
@@ -374,7 +391,7 @@ button {
 	left: 0;
 	bottom: 0;
 	width: 100%;
-	height: 79px;
+	height: var(--bottom-nav-height);
 	object-fit: cover;
 	display: block;
 	pointer-events: none;
@@ -384,10 +401,10 @@ button {
 .nav-center-button {
 	position: absolute;
 	left: calc(50% + 9px);
-	bottom: 7px;
+	bottom: calc(var(--bottom-nav-height) * 0.09);
 	transform: translateX(-50%);
-	width: 60px;
-	height: 60px;
+	width: var(--nav-center-size);
+	height: var(--nav-center-size);
 	border-radius: 50%;
 	background: #f26b4f;
 	box-shadow: 0 6px 16px rgb(0 0 0 / 30%);
@@ -398,8 +415,8 @@ button {
 }
 
 .nav-center-button img {
-	width: 24px;
-	height: 24px;
+	width: var(--nav-center-icon-size);
+	height: var(--nav-center-icon-size);
 	display: block;
 }
 
