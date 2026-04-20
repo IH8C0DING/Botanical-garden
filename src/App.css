@@ -45,15 +45,15 @@
 	}
 
 	:root {
-		--bottom-nav-height: clamp(142px, 34vw, 220px);
-		--capture-size: clamp(114px, 29vw, 168px);
-		--scanner-width: min(98vw, 620px);
+		--bottom-nav-height: clamp(126px, 30vw, 188px);
+		--capture-size: clamp(126px, 32vw, 184px);
+		--scanner-width: min(108vw, 700px);
 		--scan-status-width: clamp(340px, 94vw, 560px);
 		--add-plant-width: min(97vw, 620px);
 		--nav-center-size: clamp(112px, 28vw, 162px);
 		--nav-center-icon-size: clamp(42px, 10vw, 58px);
 		--scan-status-font-size: clamp(1.2rem, 5.1vw, 1.6rem);
-		--hint-font-size: clamp(1.18rem, 4.9vw, 1.52rem);
+		--hint-font-size: clamp(1.28rem, 5.4vw, 1.72rem);
 		--scan-progress-height: clamp(10px, 2.8vw, 16px);
 	}
 }
@@ -138,7 +138,7 @@ button {
 	padding: 0;
 	border-radius: 0;
 	margin-top: 6px;
-	transform: translateY(30px);
+	transform: translateY(16px);
 }
 
 
@@ -156,11 +156,11 @@ button {
 .capture-stack {
 	position: absolute;
 	left: 50%;
-	bottom: calc(var(--bottom-nav-height) + 14px);
+	bottom: calc(var(--bottom-nav-height) + 44px);
 	transform: translateX(-50%);
 	display: grid;
 	justify-items: center;
-	gap: clamp(10px, 2.4vw, 20px);
+	gap: clamp(12px, 2.8vw, 24px);
 	z-index: 2;
 	pointer-events: none;
 }
@@ -273,7 +273,7 @@ button {
 
 .position-hint {
 	margin: 0;
-	padding: clamp(10px, 2.5vw, 16px) clamp(18px, 5vw, 30px);
+	padding: clamp(12px, 3vw, 20px) clamp(22px, 5.8vw, 36px);
 	font-size: var(--hint-font-size);
 	line-height: 1;
 	color: #1f1f1f;
@@ -406,8 +406,8 @@ button {
 
 .nav-center-button {
 	position: absolute;
-	left: calc(50% + 9px);
-	bottom: calc(var(--bottom-nav-height) * 0.05);
+	left: 50%;
+	bottom: calc(var(--bottom-nav-height) * 0.16);
 	transform: translateX(-50%);
 	width: var(--nav-center-size);
 	height: var(--nav-center-size);
@@ -432,6 +432,6 @@ button {
 	}
 
 	.capture-stack {
-		bottom: calc(var(--bottom-nav-height) + 12px);
+		bottom: calc(var(--bottom-nav-height) + 40px);
 	}
 }
