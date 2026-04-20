@@ -477,7 +477,7 @@ button {
 .plant-page-shell {
 	min-height: 100dvh;
 	height: auto;
-	width: 100vw;
+	width: 100%;
 	max-width: none;
 	margin: 0;
 	display: block;
@@ -488,6 +488,7 @@ button {
 	overflow-x: hidden;
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
+	touch-action: pan-y;
 }
 
 .plant-nav-frame {

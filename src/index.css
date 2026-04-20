@@ -12,6 +12,11 @@ html, body, #root {
   min-height: 100%;
 }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   font-family: 'Manrope', 'Segoe UI', sans-serif;
