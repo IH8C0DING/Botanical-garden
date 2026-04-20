@@ -199,7 +199,7 @@ function App() {
           <button
             type="button"
             onClick={handleCapture}
-            className="capture-btn"
+            className={`capture-btn${scanPhase === 'found' ? ' is-hidden' : ''}`}
             disabled={!isCameraReady || scanPhase === 'scanning'}
             aria-label="Take photo"
           >

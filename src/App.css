@@ -152,6 +152,11 @@ button {
 	opacity: 0.55;
 }
 
+.capture-btn.is-hidden {
+	opacity: 0;
+	pointer-events: none;
+}
+
 
 .capture-stack {
 	position: absolute;
@@ -319,13 +324,13 @@ button {
 .add-plant-button {
 	position: absolute;
 	left: 50%;
-	bottom: calc(var(--bottom-nav-height) - 34px);
+	bottom: calc(var(--bottom-nav-height) + 28px);
 	transform: translateX(-50%);
 	width: var(--add-plant-width);
 	background: transparent;
 	padding: 0;
 	display: block;
-	z-index: 9;
+	z-index: 12;
 	animation: addPlantIn 260ms ease-out, addPlantFloat 2.8s ease-in-out 260ms infinite;
 }
 
