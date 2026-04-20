@@ -485,6 +485,7 @@ button {
 
 .plant-page-shell {
 	min-height: 100dvh;
+	height: 100dvh;
 	width: 100vw;
 	max-width: none;
 	margin: 0;
@@ -493,6 +494,8 @@ button {
 	padding-bottom: 106px;
 	position: relative;
 	overflow-x: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 .plant-hero {
