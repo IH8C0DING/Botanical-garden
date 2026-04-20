@@ -477,7 +477,7 @@ button {
 .plant-page-shell {
 	position: relative;
 	inset: auto;
-	min-height: 340dvh;
+	min-height: 100dvh;
 	height: auto;
 	width: 100%;
 	max-width: none;
@@ -486,7 +486,7 @@ button {
 	display: block;
 	background: #e8e8e8;
 	color: #131313;
-	padding-bottom: calc(var(--bottom-nav-height) + 520px);
+	padding-bottom: calc(var(--bottom-nav-height) + 36px);
 	overflow-x: hidden;
 	overflow-y: visible;
 }
@@ -525,7 +525,7 @@ button {
 }
 
 .plant-content {
-	padding: 44px 20px 380px;
+	padding: 44px 20px 120px;
 	display: grid;
 	gap: 40px;
 }
