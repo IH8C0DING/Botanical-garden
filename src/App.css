@@ -35,6 +35,41 @@
 	overflow: hidden;
 }
 
+.desktop-only-shell {
+	min-height: 100dvh;
+	width: 100%;
+	display: grid;
+	place-items: center;
+	padding: 24px;
+	background:
+		radial-gradient(circle at 10% 10%, rgb(255 255 255 / 7%), transparent 40%),
+		linear-gradient(165deg, #11161f 0%, #080b11 100%);
+}
+
+.desktop-only-card {
+	width: min(560px, 100%);
+	padding: 28px;
+	border-radius: 18px;
+	border: 1px solid rgb(255 255 255 / 14%);
+	background: rgb(13 17 24 / 88%);
+	backdrop-filter: blur(8px);
+	box-shadow: 0 16px 42px rgb(0 0 0 / 35%);
+	text-align: center;
+}
+
+.desktop-only-card h1 {
+	margin: 0 0 10px;
+	font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+	line-height: 1.2;
+}
+
+.desktop-only-card p {
+	margin: 8px 0 0;
+	font-size: clamp(1rem, 1.4vw, 1.1rem);
+	line-height: 1.5;
+	color: #d4dde8;
+}
+
 @media (max-width: 900px), (hover: none) and (pointer: coarse), (max-device-width: 900px) {
 	#root {
 		justify-content: stretch;

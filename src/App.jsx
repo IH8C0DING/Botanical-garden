@@ -6,6 +6,16 @@ import scanIndicatorSvg from './public/scanner.svg'
 import centerScanIcon from './public/Vector.svg'
 import addPlantButtonSvg from './public/addplant.svg'
 
+const MOBILE_MAX_WIDTH = 900
+
+const getIsMobileViewport = () => {
+  if (typeof window === 'undefined') {
+    return true
+  }
+
+  return window.matchMedia(`(max-width: ${MOBILE_MAX_WIDTH}px)`).matches
+}
+
 function App() {
   const videoRef = useRef(null)
   const streamRef = useRef(null)
@@ -23,6 +33,22 @@ function App() {
   const [showRecognitionStatus, setShowRecognitionStatus] = useState(false)
   const [isRecognitionClosing, setIsRecognitionClosing] = useState(false)
   const [isAddPlantClosing, setIsAddPlantClosing] = useState(false)
+  const [isMobileViewport, setIsMobileViewport] = useState(getIsMobileViewport)
+
+  useEffect(() => {
+    const handleViewportChange = () => {
+      setIsMobileViewport(getIsMobileViewport())
+    }
+
+    handleViewportChange()
+    window.addEventListener('resize', handleViewportChange)
+    window.addEventListener('orientationchange', handleViewportChange)
+
+    return () => {
+      window.removeEventListener('resize', handleViewportChange)
+      window.removeEventListener('orientationchange', handleViewportChange)
+    }
+  }, [])
 
   const clearScanTimers = useCallback(() => {
     if (scanProgressTimerRef.current) {
@@ -95,13 +121,19 @@ function App() {
   }, [stopCamera])
 
   useEffect(() => {
+    if (!isMobileViewport) {
+      clearScanTimers()
+      stopCamera()
+      return
+    }
+
     startCamera()
 
     return () => {
       clearScanTimers()
       stopCamera()
     }
-  }, [clearScanTimers, startCamera, stopCamera])
+  }, [clearScanTimers, isMobileViewport, startCamera, stopCamera])
 
   const handleCapture = () => {
     if (!videoRef.current || !isCameraReady) return
@@ -164,6 +196,18 @@ function App() {
       setIsAddPlantClosing(false)
       addPlantCloseTimerRef.current = null
     }, 260)
+  }
+
+  if (!isMobileViewport) {
+    return (
+      <main className="desktop-only-shell" role="alert" aria-live="polite">
+        <section className="desktop-only-card">
+          <h1>Mobile app only</h1>
+          <p>This experience is designed for phone screens.</p>
+          <p>Open this app on your mobile device to use the camera scanner.</p>
+        </section>
+      </main>
+    )
   }
 
   return (
