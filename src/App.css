@@ -47,14 +47,14 @@
 	:root {
 		--bottom-nav-height: clamp(126px, 30vw, 188px);
 		--capture-size: clamp(126px, 32vw, 184px);
-		--scanner-width: min(118vw, 780px);
-		--scan-status-width: clamp(410px, 100vw, 720px);
-		--add-plant-width: min(110vw, 820px);
+		--scanner-width: min(128vw, 860px);
+		--scan-status-width: clamp(460px, 100vw, 760px);
+		--add-plant-width: min(116vw, 900px);
 		--nav-center-size: clamp(112px, 28vw, 162px);
 		--nav-center-icon-size: clamp(42px, 10vw, 58px);
-		--scan-status-font-size: clamp(1.2rem, 5.1vw, 1.6rem);
+		--scan-status-font-size: clamp(1.35rem, 5.8vw, 1.85rem);
 		--hint-font-size: clamp(1.5rem, 6.4vw, 2.1rem);
-		--scan-progress-height: clamp(10px, 2.8vw, 16px);
+		--scan-progress-height: clamp(12px, 3vw, 18px);
 	}
 }
 
@@ -178,7 +178,7 @@ button {
 	backdrop-filter: blur(7px);
 	border: 1px solid rgb(255 255 255 / 25%);
 	border-radius: 16px;
-	padding: clamp(16px, 4vw, 24px) clamp(18px, 5vw, 30px);
+	padding: clamp(20px, 5vw, 30px) clamp(22px, 6vw, 36px);
 	transform: translate(-50%, -50%);
 	pointer-events: none;
 	z-index: 8;
@@ -190,7 +190,7 @@ button {
 }
 
 .scan-status-text {
-	margin: 0 0 clamp(10px, 2.8vw, 18px);
+	margin: 0 0 clamp(12px, 3vw, 20px);
 	font-size: var(--scan-status-font-size);
 	font-weight: 600;
 	letter-spacing: 0.02em;
@@ -319,7 +319,7 @@ button {
 .add-plant-button {
 	position: absolute;
 	left: 50%;
-	bottom: calc(var(--bottom-nav-height) + 26px);
+	bottom: calc(var(--bottom-nav-height) + 6px);
 	transform: translateX(-50%);
 	width: var(--add-plant-width);
 	background: transparent;
@@ -407,8 +407,8 @@ button {
 
 .nav-center-button {
 	position: absolute;
-	left: 50%;
-	bottom: calc(var(--bottom-nav-height) * 0.12);
+	left: calc(50% + 6px);
+	bottom: calc(var(--bottom-nav-height) * 0.08);
 	transform: translateX(-50%);
 	width: var(--nav-center-size);
 	height: var(--nav-center-size);
@@ -437,7 +437,7 @@ button {
 	}
 
 	.scan-wrap {
-		transform: scale(1.08);
+		transform: scale(1.14);
 		transform-origin: center;
 	}
 }
