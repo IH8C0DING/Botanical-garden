@@ -90,10 +90,10 @@ function PlantOverviewPage({ onOpenScanner }) {
         </article>
       </section>
 
-      <img src={bottomNavFrame} alt="" aria-hidden="true" className="bottom-nav-frame" />
+      <img src={bottomNavFrame} alt="" aria-hidden="true" className="bottom-nav-frame plant-nav-frame" />
       <button
         type="button"
-        className="nav-center-button"
+        className="nav-center-button plant-nav-center-button"
         aria-label="Back to scanner"
         onClick={onOpenScanner}
       >
