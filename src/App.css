@@ -23,6 +23,18 @@
 	width: 100%;
 }
 
+#root.is-plant-screen {
+	min-height: auto;
+	height: auto;
+	overflow: visible;
+}
+
+#root.is-plant-screen .plant-page-shell {
+	min-height: max-content;
+	height: auto;
+	overflow-y: visible;
+}
+
 .app-shell {
 	position: relative;
 	width: 100vw;

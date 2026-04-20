@@ -124,25 +124,14 @@ function App() {
   const [activeScreen, setActiveScreen] = useState('scanner')
 
   useEffect(() => {
+    const root = document.getElementById('root')
+    if (!root) return
+
     const isPlantScreen = activeScreen === 'plant'
-    document.documentElement.style.overflowX = 'hidden'
-    document.documentElement.style.overflowY = isPlantScreen ? 'auto' : 'hidden'
-    document.documentElement.style.height = isPlantScreen ? 'auto' : '100%'
-    document.documentElement.style.touchAction = isPlantScreen ? 'pan-y' : 'auto'
-    document.body.style.overflowX = 'hidden'
-    document.body.style.overflowY = isPlantScreen ? 'auto' : 'hidden'
-    document.body.style.height = isPlantScreen ? 'auto' : '100%'
-    document.body.style.touchAction = isPlantScreen ? 'pan-y' : 'auto'
+    root.classList.toggle('is-plant-screen', isPlantScreen)
 
     return () => {
-      document.documentElement.style.overflowX = ''
-      document.documentElement.style.overflowY = ''
-      document.documentElement.style.height = ''
-      document.documentElement.style.touchAction = ''
-      document.body.style.overflowX = ''
-      document.body.style.overflowY = ''
-      document.body.style.height = ''
-      document.body.style.touchAction = ''
+      root.classList.remove('is-plant-screen')
     }
   }, [activeScreen])
 
