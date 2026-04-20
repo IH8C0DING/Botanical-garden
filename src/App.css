@@ -35,7 +35,7 @@
 	overflow: hidden;
 }
 
-@media (hover: none) and (pointer: coarse) {
+@media (max-width: 900px) {
 	#root {
 		justify-content: stretch;
 	}
