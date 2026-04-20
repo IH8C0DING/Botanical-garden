@@ -6,14 +6,21 @@ import scanIndicatorSvg from './public/scanner.svg'
 import centerScanIcon from './public/Vector.svg'
 import addPlantButtonSvg from './public/addplant.svg'
 
-const MOBILE_MAX_WIDTH = 900
+const MOBILE_MAX_WIDTH = 1100
 
 const getIsMobileViewport = () => {
   if (typeof window === 'undefined') {
     return true
   }
 
-  return window.matchMedia(`(max-width: ${MOBILE_MAX_WIDTH}px)`).matches
+  const isTouchDevice =
+    navigator.maxTouchPoints > 0 ||
+    window.matchMedia('(pointer: coarse)').matches ||
+    window.matchMedia('(hover: none)').matches
+
+  const isNarrowViewport = window.matchMedia(`(max-width: ${MOBILE_MAX_WIDTH}px)`).matches
+
+  return isTouchDevice || isNarrowViewport
 }
 
 function App() {
