@@ -519,7 +519,8 @@ button {
 .hero-image {
 	height: 100%;
 	width: 100%;
-	object-fit: cover;
+	object-fit: contain;
+	object-position: center;
 	display: block;
 }
 
@@ -534,11 +535,12 @@ button {
 	align-items: center;
 	justify-content: space-between;
 	gap: 24px;
+	padding-inline: 4px;
 }
 
 .plant-name {
 	margin: 0;
-	font-size: 3.85rem;
+	font-size: 4.2rem;
 	font-weight: 700;
 	line-height: 1;
 }
@@ -548,7 +550,7 @@ button {
 	align-items: center;
 	gap: 18px;
 	color: #1d1d1d;
-	font-size: 1.9rem;
+	font-size: 2.05rem;
 }
 
 .plant-age-pill button {
@@ -558,7 +560,7 @@ button {
 	border: 1px solid #d6d6d6;
 	background: #efefef;
 	color: #333;
-	font-size: 2.8rem;
+	font-size: 3rem;
 	line-height: 1;
 	display: grid;
 	place-items: center;
@@ -569,17 +571,17 @@ button {
 .plant-todo-list {
 	display: grid;
 	gap: 24px;
-	padding-inline: 4px;
+	padding-inline: 0;
 }
 
 .plant-stat-card {
 	background: #f3f3f3;
 	border-radius: 36px;
-	padding: 56px 42px;
+	padding: 62px 46px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	font-size: 2.12rem;
+	font-size: 2.3rem;
 	box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
 }
 
@@ -597,25 +599,26 @@ button {
 
 .plant-section-title {
 	margin: 48px 0 14px;
-	font-size: 3.9rem;
+	font-size: 4.2rem;
 	line-height: 1.08;
 	font-weight: 700;
+	padding-inline: 4px;
 }
 
 .plant-todo-card {
 	background: #f5f5f5;
 	border-radius: 36px;
-	padding: 36px;
+	padding: 42px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 24px;
+	gap: 26px;
 	box-shadow: 0 2px 10px rgb(0 0 0 / 8%);
 }
 
 .todo-image {
 	width: clamp(240px, 56vw, 320px);
-	height: 184px;
+	height: 204px;
 	border-radius: 24px;
 	box-shadow: 0 4px 11px rgb(0 0 0 / 10%);
 	flex-shrink: 0;
@@ -628,9 +631,9 @@ button {
 	border-radius: 999px;
 	background: #f26b4f;
 	color: #fff;
-	font-size: 1.9rem;
-	padding: 26px 42px;
-	min-width: 214px;
+	font-size: 2.05rem;
+	padding: 30px 46px;
+	min-width: 232px;
 	text-align: center;
 }
 
@@ -640,11 +643,11 @@ button {
 	padding: 0 0 30px;
 	box-shadow: 0 2px 10px rgb(0 0 0 / 8%);
 	overflow: hidden;
-	margin-inline: 4px;
+	margin-inline: 0;
 }
 
 .collection-image {
-	height: 620px;
+	height: 700px;
 	width: 100%;
 	object-fit: cover;
 	display: block;
@@ -652,13 +655,13 @@ button {
 
 .collection-meta {
 	margin: 16px 12px 0;
-	padding: 34px 38px;
+	padding: 38px 42px;
 	border-radius: 20px;
 	border: 1px solid #bfe2e2;
 	display: flex;
 	justify-content: space-between;
 	gap: 14px;
-	font-size: 2.05rem;
+	font-size: 2.25rem;
 	background: #f2f2f2;
 }
 

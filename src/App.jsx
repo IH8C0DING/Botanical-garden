@@ -52,7 +52,7 @@ function PlantOverviewPage() {
 
       <section className="plant-content">
         <div className="plant-header-row">
-          <h1 className="plant-name">Sunny</h1>
+          <h1 className="plant-name">Coco</h1>
           <div className="plant-age-pill">
             <button type="button" aria-label="Previous week">&#8249;</button>
             <span>6 weeks</span>
