@@ -10,17 +10,29 @@
 
 #root {
 	min-height: 100dvh;
+	width: 100%;
 	display: flex;
 	justify-content: center;
 }
 
 .app-shell {
 	position: relative;
-	width: min(393px, 100vw);
+	width: 100vw;
+	max-width: 393px;
 	height: 100dvh;
 	background: #0a0a0a;
 	color: var(--text);
 	overflow: hidden;
+}
+
+@media (hover: none) and (pointer: coarse) {
+	#root {
+		justify-content: stretch;
+	}
+
+	.app-shell {
+		max-width: none;
+	}
 }
 
 .camera-stage {
