@@ -47,13 +47,13 @@
 	:root {
 		--bottom-nav-height: clamp(126px, 30vw, 188px);
 		--capture-size: clamp(126px, 32vw, 184px);
-		--scanner-width: min(108vw, 700px);
-		--scan-status-width: clamp(340px, 94vw, 560px);
-		--add-plant-width: min(97vw, 620px);
+		--scanner-width: min(118vw, 780px);
+		--scan-status-width: clamp(370px, 98vw, 640px);
+		--add-plant-width: min(104vw, 760px);
 		--nav-center-size: clamp(112px, 28vw, 162px);
 		--nav-center-icon-size: clamp(42px, 10vw, 58px);
 		--scan-status-font-size: clamp(1.2rem, 5.1vw, 1.6rem);
-		--hint-font-size: clamp(1.28rem, 5.4vw, 1.72rem);
+		--hint-font-size: clamp(1.5rem, 6.4vw, 2.1rem);
 		--scan-progress-height: clamp(10px, 2.8vw, 16px);
 	}
 }
@@ -177,8 +177,8 @@ button {
 	background: rgb(16 19 25 / 58%);
 	backdrop-filter: blur(7px);
 	border: 1px solid rgb(255 255 255 / 25%);
-	border-radius: 12px;
-	padding: 8px 10px;
+	border-radius: 16px;
+	padding: clamp(12px, 3vw, 18px) clamp(14px, 4vw, 24px);
 	transform: translate(-50%, -50%);
 	pointer-events: none;
 	animation: scanStatusIn 260ms ease-out both;
@@ -189,7 +189,7 @@ button {
 }
 
 .scan-status-text {
-	margin: 0 0 6px;
+	margin: 0 0 clamp(8px, 2.2vw, 14px);
 	font-size: var(--scan-status-font-size);
 	font-weight: 600;
 	letter-spacing: 0.02em;
@@ -273,9 +273,9 @@ button {
 
 .position-hint {
 	margin: 0;
-	padding: clamp(12px, 3vw, 20px) clamp(22px, 5.8vw, 36px);
+	padding: clamp(16px, 4.2vw, 26px) clamp(28px, 7vw, 44px);
 	font-size: var(--hint-font-size);
-	line-height: 1;
+	line-height: 1.05;
 	color: #1f1f1f;
 	background: rgb(255 255 255 / 58%);
 	backdrop-filter: blur(5px);
@@ -318,7 +318,7 @@ button {
 .add-plant-button {
 	position: absolute;
 	left: 50%;
-	bottom: calc(var(--bottom-nav-height) + 40px);
+	bottom: calc(var(--bottom-nav-height) + 2px);
 	transform: translateX(-50%);
 	width: var(--add-plant-width);
 	background: transparent;
@@ -407,7 +407,7 @@ button {
 .nav-center-button {
 	position: absolute;
 	left: 50%;
-	bottom: calc(var(--bottom-nav-height) * 0.16);
+	bottom: calc(var(--bottom-nav-height) * 0.22);
 	transform: translateX(-50%);
 	width: var(--nav-center-size);
 	height: var(--nav-center-size);
@@ -433,5 +433,10 @@ button {
 
 	.capture-stack {
 		bottom: calc(var(--bottom-nav-height) + 40px);
+	}
+
+	.scan-wrap {
+		transform: scale(1.08);
+		transform-origin: center;
 	}
 }
