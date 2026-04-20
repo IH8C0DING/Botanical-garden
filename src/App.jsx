@@ -124,6 +124,21 @@ function App() {
   const [activeScreen, setActiveScreen] = useState('scanner')
 
   useEffect(() => {
+    const isPlantScreen = activeScreen === 'plant'
+    document.documentElement.style.overflowY = isPlantScreen ? 'auto' : 'hidden'
+    document.documentElement.style.height = isPlantScreen ? 'auto' : '100%'
+    document.body.style.overflowY = isPlantScreen ? 'auto' : 'hidden'
+    document.body.style.height = isPlantScreen ? 'auto' : '100%'
+
+    return () => {
+      document.documentElement.style.overflowY = ''
+      document.documentElement.style.height = ''
+      document.body.style.overflowY = ''
+      document.body.style.height = ''
+    }
+  }, [activeScreen])
+
+  useEffect(() => {
     const handleViewportChange = () => {
       setIsMobileViewport(getIsMobileViewport())
     }

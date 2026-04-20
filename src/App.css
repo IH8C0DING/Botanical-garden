@@ -480,12 +480,14 @@ button {
 	width: 100vw;
 	max-width: none;
 	margin: 0;
+	display: block;
 	background: #e8e8e8;
 	color: #131313;
 	padding-bottom: calc(var(--bottom-nav-height) + 44px);
 	position: relative;
 	overflow-x: hidden;
-	overflow-y: visible;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 .plant-nav-frame {
