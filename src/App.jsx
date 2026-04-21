@@ -46,12 +46,10 @@ function PlantOverviewPage() {
   const navigate = useNavigate()
   const [plantName, setPlantName] = useState('Coco')
   const [waterPercent, setWaterPercent] = useState(10)
-  const [waterAnimationId, setWaterAnimationId] = useState(0)
   const [isWatering, setIsWatering] = useState(false)
 
   const handleWaterClick = () => {
     setWaterPercent(70)
-    setWaterAnimationId((value) => value + 1)
     setIsWatering(true)
     window.scrollTo({ top: 0, behavior: 'smooth' })
 
@@ -63,7 +61,11 @@ function PlantOverviewPage() {
   return (
     <main className="plant-page-shell">
       <section className="plant-hero" aria-label="Plant overview hero">
-        <img src={heroPlantImage} alt="Plant hero" className="hero-image" />
+        <img
+          src={isWatering ? wateringTaskGif : heroPlantImage}
+          alt="Plant hero"
+          className="hero-image"
+        />
       </section>
 
       <section className="plant-content">
@@ -113,12 +115,7 @@ function PlantOverviewPage() {
         <h2 className="plant-section-title">To Do</h2>
         <div className="plant-todo-list">
           <article className="plant-todo-card">
-            <img
-              key={waterAnimationId}
-              src={isWatering ? wateringTaskGif : waterTaskImage}
-              alt="Water task"
-              className={`todo-image${waterAnimationId > 0 ? ' is-watering' : ''}`}
-            />
+            <img src={waterTaskImage} alt="Water task" className="todo-image" />
             <button type="button" className="plant-todo-action" onClick={handleWaterClick}>
               Water me
             </button>
