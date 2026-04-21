@@ -8,6 +8,7 @@ import centerScanIcon from './public/Vector.svg'
 import addPlantButtonSvg from './public/addplant.svg'
 import heroPlantImage from './public/1.png'
 import waterTaskImage from './public/2.png'
+import wateringTaskGif from './public/watering.gif'
 import cutTaskImage from './public/3.png'
 import repotTaskImage from './public/4.png'
 import collectionPlantImage from './public/5.png'
@@ -44,13 +45,19 @@ function DesktopOnlyNotice() {
 function PlantOverviewPage() {
   const navigate = useNavigate()
   const [plantName, setPlantName] = useState('Coco')
-  const [waterPercent, setWaterPercent] = useState(50)
+  const [waterPercent, setWaterPercent] = useState(10)
   const [waterAnimationId, setWaterAnimationId] = useState(0)
+  const [isWatering, setIsWatering] = useState(false)
 
   const handleWaterClick = () => {
-    setWaterPercent(100)
+    setWaterPercent(70)
     setWaterAnimationId((value) => value + 1)
+    setIsWatering(true)
     window.scrollTo({ top: 0, behavior: 'smooth' })
+
+    window.setTimeout(() => {
+      setIsWatering(false)
+    }, 1700)
   }
 
   return (
@@ -85,11 +92,13 @@ function PlantOverviewPage() {
         <div className="plant-stats-list">
           <article className="plant-stat-card">
             <span>Water</span>
-            <strong className="ok">{waterPercent}% good</strong>
+            <strong className={waterPercent >= 50 ? 'ok' : 'bad'}>
+              {waterPercent}% {waterPercent >= 50 ? 'good' : 'bad'}
+            </strong>
           </article>
           <article className="plant-stat-card">
             <span>Soil</span>
-            <strong className="bad">10% bad</strong>
+            <strong className="ok">50% good</strong>
           </article>
           <article className="plant-stat-card">
             <span>Fertilizer</span>
@@ -106,7 +115,7 @@ function PlantOverviewPage() {
           <article className="plant-todo-card">
             <img
               key={waterAnimationId}
-              src={waterTaskImage}
+              src={isWatering ? wateringTaskGif : waterTaskImage}
               alt="Water task"
               className={`todo-image${waterAnimationId > 0 ? ' is-watering' : ''}`}
             />
