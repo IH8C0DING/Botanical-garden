@@ -43,6 +43,15 @@ function DesktopOnlyNotice() {
 
 function PlantOverviewPage() {
   const navigate = useNavigate()
+  const [plantName, setPlantName] = useState('Coco')
+  const [waterPercent, setWaterPercent] = useState(50)
+  const [waterAnimationId, setWaterAnimationId] = useState(0)
+
+  const handleWaterClick = () => {
+    setWaterPercent(100)
+    setWaterAnimationId((value) => value + 1)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
     <main className="plant-page-shell">
@@ -53,10 +62,18 @@ function PlantOverviewPage() {
       <section className="plant-content">
         <div className="plant-header-row">
           <h1 className="plant-name">
-            <span>Coco</span>
-            <button type="button" className="plant-edit-btn" aria-label="Edit plant name">
+            <input
+              type="text"
+              className="plant-name-input"
+              value={plantName}
+              onChange={(event) => setPlantName(event.target.value)}
+              aria-label="Plant name"
+              autoComplete="off"
+              spellCheck="false"
+            />
+            <span className="plant-edit-btn" aria-hidden="true">
               &#9998;
-            </button>
+            </span>
           </h1>
           <div className="plant-age-pill">
             <button type="button" aria-label="Previous week">&#8249;</button>
@@ -68,7 +85,7 @@ function PlantOverviewPage() {
         <div className="plant-stats-list">
           <article className="plant-stat-card">
             <span>Water</span>
-            <strong className="ok">50% good</strong>
+            <strong className="ok">{waterPercent}% good</strong>
           </article>
           <article className="plant-stat-card">
             <span>Soil</span>
@@ -87,8 +104,15 @@ function PlantOverviewPage() {
         <h2 className="plant-section-title">To Do</h2>
         <div className="plant-todo-list">
           <article className="plant-todo-card">
-            <img src={waterTaskImage} alt="Water task" className="todo-image" />
-            <button type="button" className="plant-todo-action">Water me</button>
+            <img
+              key={waterAnimationId}
+              src={waterTaskImage}
+              alt="Water task"
+              className={`todo-image${waterAnimationId > 0 ? ' is-watering' : ''}`}
+            />
+            <button type="button" className="plant-todo-action" onClick={handleWaterClick}>
+              Water me
+            </button>
           </article>
           <article className="plant-todo-card">
             <img src={cutTaskImage} alt="Cut task" className="todo-image" />
