@@ -524,6 +524,12 @@ button {
 	display: block;
 }
 
+.hero-image.is-watering {
+	object-position: 58% center;
+	transform: scale(1.02);
+	transform-origin: center;
+}
+
 .plant-content {
 	padding: 44px 20px 120px;
 	display: grid;

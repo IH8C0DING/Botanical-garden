@@ -64,7 +64,7 @@ function PlantOverviewPage() {
         <img
           src={isWatering ? wateringTaskGif : heroPlantImage}
           alt="Plant hero"
-          className="hero-image"
+          className={`hero-image${isWatering ? ' is-watering' : ''}`}
         />
       </section>
 
