@@ -8,7 +8,7 @@ import centerScanIcon from './public/Vector.svg'
 import addPlantButtonSvg from './public/addplant.svg'
 import heroPlantImage from './public/1.png'
 import waterTaskImage from './public/2.png'
-import wateringSquareGif from './public/watering-square.gif'
+import wateringVideo from './public/ezgif-57e3bac026eba712 (1).mp4'
 import cutTaskImage from './public/3.png'
 import repotTaskImage from './public/4.png'
 import collectionPlantImage from './public/5.png'
@@ -44,28 +44,48 @@ function DesktopOnlyNotice() {
 
 function PlantOverviewPage() {
   const navigate = useNavigate()
+  const wateringVideoRef = useRef(null)
   const [plantName, setPlantName] = useState('Coco')
   const [waterPercent, setWaterPercent] = useState(10)
   const [isWatering, setIsWatering] = useState(false)
+
+  useEffect(() => {
+    if (!isWatering || !wateringVideoRef.current) return
+
+    const video = wateringVideoRef.current
+    video.currentTime = 0
+
+    const playPromise = video.play()
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {
+        setIsWatering(false)
+      })
+    }
+  }, [isWatering])
 
   const handleWaterClick = () => {
     setWaterPercent(70)
     setIsWatering(true)
     window.scrollTo({ top: 0, behavior: 'smooth' })
-
-    window.setTimeout(() => {
-      setIsWatering(false)
-    }, 1700)
   }
 
   return (
     <main className="plant-page-shell">
       <section className="plant-hero" aria-label="Plant overview hero">
-        <img
-          src={isWatering ? wateringSquareGif : heroPlantImage}
-          alt="Plant hero"
-          className="hero-image"
-        />
+        {isWatering ? (
+          <video
+            ref={wateringVideoRef}
+            src={wateringVideo}
+            className="hero-image hero-video"
+            playsInline
+            muted
+            preload="auto"
+            onEnded={() => setIsWatering(false)}
+            onError={() => setIsWatering(false)}
+          />
+        ) : (
+          <img src={heroPlantImage} alt="Plant hero" className="hero-image" />
+        )}
       </section>
 
       <section className="plant-content">
