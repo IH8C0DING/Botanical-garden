@@ -660,11 +660,6 @@ button {
 	display: block;
 }
 
-.todo-image.is-watering {
-	animation: waterBounce 720ms ease-in-out both;
-	transform-origin: center bottom;
-}
-
 .plant-todo-action {
 	border: 0;
 	border-radius: 999px;
@@ -708,28 +703,5 @@ button {
 .collection-meta p {
 	margin: 0;
 	line-height: 1.15;
-}
-
-@keyframes waterBounce {
-	0% {
-		transform: translateY(0) scale(1);
-		filter: saturate(1);
-	}
-	28% {
-		transform: translateY(-10px) scale(1.02);
-		filter: saturate(1.08) brightness(1.04);
-	}
-	50% {
-		transform: translateY(0) scale(0.99);
-		filter: saturate(1.15) brightness(1.08);
-	}
-	74% {
-		transform: translateY(-4px) scale(1.01);
-		filter: saturate(1.05) brightness(1.03);
-	}
-	100% {
-		transform: translateY(0) scale(1);
-		filter: saturate(1);
-	}
 }
 

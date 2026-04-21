@@ -8,7 +8,7 @@ import centerScanIcon from './public/Vector.svg'
 import addPlantButtonSvg from './public/addplant.svg'
 import heroPlantImage from './public/1.png'
 import waterTaskImage from './public/2.png'
-import wateringTaskGif from './public/watering.gif'
+import wateringSquareGif from './public/watering-square.gif'
 import cutTaskImage from './public/3.png'
 import repotTaskImage from './public/4.png'
 import collectionPlantImage from './public/5.png'
@@ -62,9 +62,9 @@ function PlantOverviewPage() {
     <main className="plant-page-shell">
       <section className="plant-hero" aria-label="Plant overview hero">
         <img
-          src={isWatering ? wateringTaskGif : heroPlantImage}
+          src={isWatering ? wateringSquareGif : heroPlantImage}
           alt="Plant hero"
-          className={`hero-image${isWatering ? ' is-watering' : ''}`}
+          className="hero-image"
         />
       </section>
 
