@@ -520,14 +520,8 @@ button {
 	height: 100%;
 	width: 100%;
 	object-fit: cover;
-	object-position: center;
+	object-position: center 72%;
 	display: block;
-}
-
-.hero-image.is-watering {
-	object-position: 58% center;
-	transform: scale(1.02);
-	transform-origin: center;
 }
 
 .plant-content {
